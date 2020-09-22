@@ -32,7 +32,7 @@ namespace estacionamento.Application
             return mapperEstabelecimento.MapperListEstabelecimentosDto(estabelecimentos);
         }
 
-        public EstabelecimentoDto GetByid(int id)
+        public EstabelecimentoDto GetById(int id)
         {
             var estabelecimento = serviceEstabelecimento.GetById(id);
             return mapperEstabelecimento.MapperEntityToDto(estabelecimento);

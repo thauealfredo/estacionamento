@@ -13,6 +13,6 @@ namespace estacionamento.Application.Interfaces
 
         IEnumerable<EstabelecimentoDto> GetAll();
 
-        EstabelecimentoDto GetByid(int id);
+        EstabelecimentoDto GetById(int id);
     }
 }
