@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Mappers\" />
+    <ProjectReference Include="..\estacionamento.Domain.Core\estacionamento.Domain.Core.csproj" />
+    <ProjectReference Include="..\estacionamento.Domain.Services\estacionamento.Domain.Services.csproj" />
+    <ProjectReference Include="..\estacionamento.Domain\estacionamento.Domain.csproj" />
   </ItemGroup>
 
 </Project>

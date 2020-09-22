@@ -1,4 +1,13 @@
 ﻿using Autofac;
+using estacionamento.Application;
+using estacionamento.Application.Interfaces;
+using estacionamento.Application.Interfaces.Mappers;
+using estacionamento.Application.Mappers;
+using estacionamento.Domain.Core.Interfaces.Repositorys;
+using estacionamento.Domain.Core.Interfaces.Services;
+using estacionamento.Domain.Entitys;
+using estacionamento.Domain.Services;
+using estacionamento.Infrastructure.Data.Repositorys;
 
 namespace estacionamento.Infrastructure.CrossCuting.IOC
 {
@@ -8,17 +17,17 @@ namespace estacionamento.Infrastructure.CrossCuting.IOC
         {
             #region IOC
 
-            //builder.RegisterType<ApplicationServiceCliente>().As<IApplicationServiceCliente>();
-            //builder.RegisterType<ApplicationServiceProduto>().As<IApplicationServiceProduto>();
+            builder.RegisterType<ApplicationServiceEstabelecimento>().As<IApplicationServiceEstabelecimento>();
+            builder.RegisterType<ApplicationServiceVeiculo>().As<IApplicationServiceVeiculo>();
 
-            //builder.RegisterType<ServiceCliente>().As<IServiceCliente>();
-            //builder.RegisterType<ServiceProduto>().As<IServiceProduto>();
+            builder.RegisterType<ServiceEstabelecimento<Estabelecimento>>().As<IServiceEstabelecimento<Estabelecimento>>();
+            builder.RegisterType<ServiceVeiculo<Veiculo>>().As<IServiceVeiculo<Veiculo>>();
 
-            //builder.RegisterType<RepositoryCliente>().As<IRepositoryCliente>();
-            //builder.RegisterType<RepositoryProduto>().As<IRepositoryProduto>();
+            builder.RegisterType<RepositoryEstabelecimento<Estabelecimento>>().As<IRepositoryEstabelecimento<Estabelecimento>>();
+            builder.RegisterType<RepositoryVeiculo<Veiculo>>().As<IRepositoryVeiculo<Veiculo>>();
 
-            //builder.RegisterType<MapperCliente>().As<IMapperCliente>();
-            //builder.RegisterType<MapperProduto>().As<IMapperProduto>();
+            builder.RegisterType<MapperEstabelecimento>().As<IMapperEstabelecimento>();
+            builder.RegisterType<MapperVeiculo>().As<IMapperVeiculo>();
 
             #endregion IOC
         }

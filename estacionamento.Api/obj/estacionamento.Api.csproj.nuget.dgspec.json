@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj": {}
+    "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj": {
+    "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj",
         "projectName": "estacionamento.Api",
-        "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj",
-        "packagesPath": "C:\\Users\\Th\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Api\\obj\\",
+        "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Api\\estacionamento.Api.csproj",
+        "packagesPath": "C:\\Users\\Thaue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Th\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thaue\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

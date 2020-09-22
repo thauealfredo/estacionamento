@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj": {}
+    "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj": {
+    "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj",
         "projectName": "estacionamento.Domain.Core",
-        "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj",
-        "packagesPath": "C:\\Users\\Th\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\obj\\",
+        "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj",
+        "packagesPath": "C:\\Users\\Thaue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Th\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thaue\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,20 +59,20 @@
         }
       }
     },
-    "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj": {
+    "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj",
+        "projectUniqueName": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj",
         "projectName": "estacionamento.Domain.Services",
-        "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj",
-        "packagesPath": "C:\\Users\\Th\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Services\\obj\\",
+        "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Services\\estacionamento.Domain.Services.csproj",
+        "packagesPath": "C:\\Users\\Thaue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Th\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thaue\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,8 +85,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj": {
-                "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj"
+              "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj": {
+                "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj"
               }
             }
           }
