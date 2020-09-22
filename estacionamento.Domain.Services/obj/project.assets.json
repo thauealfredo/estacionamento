@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "estacionamento.Domain.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/estacionamento.Domain.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/estacionamento.Domain.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "estacionamento.Domain.Core/1.0.0": {
+      "type": "project",
+      "path": "../estacionamento.Domain.Core/estacionamento.Domain.Core.csproj",
+      "msbuildProject": "../estacionamento.Domain.Core/estacionamento.Domain.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "estacionamento.Domain.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Th\\.nuget\\packages\\": {},
@@ -36,7 +55,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj": {
+              "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

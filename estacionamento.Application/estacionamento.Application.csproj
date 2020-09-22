@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Mappers\" />
+  </ItemGroup>
+
 </Project>

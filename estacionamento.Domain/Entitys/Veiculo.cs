@@ -2,7 +2,7 @@
 
 namespace estacionamento.Domain.Entitys
 {
-    public class Veiculos
+    public class Veiculo
     {
         public int Placa { get; set; }
 
