@@ -10,7 +10,7 @@ namespace estacionamento.Application.Dtos
 
         public string Modelo { get; set; }
 
-        public string Tipo { get; set; }
+        public int Tipo { get; set; }
 
         public int IdVaga { get; set; }
 
@@ -18,6 +18,5 @@ namespace estacionamento.Application.Dtos
 
         public DateTime HrEntrada { get; set; }
 
-        public DateTime HrSaida { get; set; }
     }
 }

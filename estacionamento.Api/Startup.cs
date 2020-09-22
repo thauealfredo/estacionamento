@@ -1,17 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using estacionamento.Application;
+using estacionamento.Application.Interfaces;
+using estacionamento.Application.Interfaces.Mappers;
+using estacionamento.Application.Mappers;
+using estacionamento.Domain.Core.Interfaces.Repositorys;
+using estacionamento.Domain.Core.Interfaces.Services;
+using estacionamento.Domain.Entitys;
+using estacionamento.Domain.Services;
 using estacionamento.Infrastructure.Data;
+using estacionamento.Infrastructure.Data.Repositorys;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace estacionamento.Api
@@ -30,11 +33,27 @@ namespace estacionamento.Api
         {
             var host = Configuration["DBHOST"] ?? "localhost";
             var port = Configuration["DBPORT"] ?? "3306";
-            var user = Configuration["DBUSER"] ?? "";
+            var user = Configuration["DBUSER"] ?? "root";
             var password = Configuration["DBPASSWORD"] ?? "usbw";
+
+            
+
             services.AddDbContext<SqlContext>(options =>
-                options.UseMySql($"server={host};userid={user};pwd={password};"
-                    + $"port={port};database=DDD"));
+                  options.UseMySql($"server={host};userid={user};pwd={password};"
+                      + $"port={port};database=DDD"));
+
+            services.AddScoped<IApplicationServiceEstabelecimento, ApplicationServiceEstabelecimento>();
+            services.AddScoped<IApplicationServiceVeiculo, ApplicationServiceVeiculo>();
+
+            services.AddScoped<IServiceEstabelecimento<Estabelecimento>, ServiceEstabelecimento<Estabelecimento>>();
+            services.AddScoped<IServiceVeiculo<Veiculo>, ServiceVeiculo<Veiculo>>();
+
+            services.AddScoped<IRepositoryEstabelecimento<Estabelecimento>, RepositoryEstabelecimento<Estabelecimento>>();
+            services.AddScoped<IRepositoryVeiculo<Veiculo>, RepositoryVeiculo<Veiculo>>();
+
+            services.AddScoped<IMapperEstabelecimento, MapperEstabelecimento>();
+            services.AddScoped<IMapperVeiculo, MapperVeiculo>();
+
             services.AddControllers();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSwaggerGen(c =>
@@ -50,7 +69,6 @@ namespace estacionamento.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
 
             app.UseSwagger();
 

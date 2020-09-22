@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "wKPpHLzMY4yJAXG30rcPd3BtvtrD/Krxz2HJcpP+lVCtPlOleXFqhH/fpzobkhTsjKuApw/DDiIRf8mG5Fbkzw==",
+  "dgSpecHash": "MERvxi2Re/IouskAz0fXcT4eVCv2xZEQi2weVQ8+nokLGU9nsH2jRxjQvvc8OFNZ077lt8/P9VuLZOKzAhh9XA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Infrastructure\\estacionamento.Infrastructure.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Thaue\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
-    "C:\\Users\\Thaue\\.nuget\\packages\\autofac.extensions.dependencyinjection\\6.0.0\\autofac.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\Thaue\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Thaue\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\Thaue\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.8\\microsoft.entityframeworkcore.3.1.8.nupkg.sha512",

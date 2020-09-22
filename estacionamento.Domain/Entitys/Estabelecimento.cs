@@ -13,10 +13,6 @@
         public int Telefone { get; set; }
         public int VagaCarro { get; set; }
 
-        public int VagaDispoCarro { get; set; }
-
         public int VagaMoto { get; set; }
-
-        public int VagaDispoMoto { get; set; }
     }
 }

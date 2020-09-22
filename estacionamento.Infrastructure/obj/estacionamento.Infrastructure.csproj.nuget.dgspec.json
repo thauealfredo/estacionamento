@@ -50,6 +50,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -285,14 +291,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Autofac": {
-              "target": "Package",
-              "version": "[5.2.0, )"
-            },
-            "Autofac.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.8, )"

@@ -18,7 +18,6 @@ namespace estacionamento.Application.Mappers
                 Modelo = veiculoDto.Modelo,
                 Tipo = veiculoDto.Tipo,
                 HrEntrada = veiculoDto.HrEntrada,
-                HrSaida = veiculoDto.HrSaida,
                 IdEstabelecimento = veiculoDto.IdEstabelecimento,
                 IdVaga = veiculoDto.IdVaga
             };
@@ -35,7 +34,6 @@ namespace estacionamento.Application.Mappers
                 Modelo = veiculo.Modelo,
                 Tipo = veiculo.Tipo,
                 HrEntrada = veiculo.HrEntrada,
-                HrSaida = veiculo.HrSaida,
                 IdEstabelecimento = veiculo.IdEstabelecimento,
                 IdVaga = veiculo.IdVaga
             };
@@ -52,7 +50,6 @@ namespace estacionamento.Application.Mappers
                 Modelo = v.Modelo,
                 Tipo = v.Tipo,
                 HrEntrada = v.HrEntrada,
-                HrSaida = v.HrSaida,
                 IdEstabelecimento = v.IdEstabelecimento,
                 IdVaga = v.IdVaga
             });
