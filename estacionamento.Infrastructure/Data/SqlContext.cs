@@ -29,7 +29,7 @@ namespace estacionamento.Infrastructure.Data
                     entry.Property("HrEntrada").CurrentValue = DateTime.Now;
                 }
 
-                if (entry.State == EntityState.Deleted)
+                if (entry.State == EntityState.Modified)
                 {
                     entry.Property("HrSaida").CurrentValue = DateTime.Now;
                 }

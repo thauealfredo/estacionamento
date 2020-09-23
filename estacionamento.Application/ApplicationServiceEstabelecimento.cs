@@ -38,9 +38,9 @@ namespace estacionamento.Application
             return mapperEstabelecimento.MapperEntityToDto(estabelecimento);
         }
 
-        public void Remove(EstabelecimentoDto estabelecimentoDto)
+        public void Remove(int id)
         {
-            var estabelecimento = mapperEstabelecimento.MapperDtoToEntity(estabelecimentoDto);
+            var estabelecimento = serviceEstabelecimento.GetById(id);
             serviceEstabelecimento.Remove(estabelecimento);
         }
 

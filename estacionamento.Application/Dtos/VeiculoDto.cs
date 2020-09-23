@@ -4,7 +4,9 @@ namespace estacionamento.Application.Dtos
 {
     public class VeiculoDto
     {
-        public int Placa { get; set; }
+        public int Id { get; set; }
+
+        public string Placa { get; set; }
 
         public string Marca { get; set; }
 
@@ -18,5 +20,6 @@ namespace estacionamento.Application.Dtos
 
         public DateTime HrEntrada { get; set; }
 
+        public DateTime HrSaida { get; set; }
     }
 }

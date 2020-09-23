@@ -9,7 +9,7 @@ namespace estacionamento.Application.Interfaces
 
         void Update(EstabelecimentoDto estabelecimentoDto);
 
-        void Remove(EstabelecimentoDto estabelecimentoDto);
+        void Remove(int id);
 
         IEnumerable<EstabelecimentoDto> GetAll();
 

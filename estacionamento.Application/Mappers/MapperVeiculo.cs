@@ -13,13 +13,15 @@ namespace estacionamento.Application.Mappers
         {
             var veiculo = new Veiculo()
             {
+                Id = veiculoDto.Id,
                 Placa = veiculoDto.Placa,
                 Marca = veiculoDto.Marca,
                 Modelo = veiculoDto.Modelo,
                 Tipo = veiculoDto.Tipo,
-                HrEntrada = veiculoDto.HrEntrada,
                 IdEstabelecimento = veiculoDto.IdEstabelecimento,
-                IdVaga = veiculoDto.IdVaga
+                IdVaga = veiculoDto.IdVaga,
+                HrEntrada = veiculoDto.HrEntrada,
+                HrSaida = (DateTime)veiculoDto.HrSaida
             };
 
             return veiculo;
@@ -29,13 +31,15 @@ namespace estacionamento.Application.Mappers
         {
             var veiculoDto = new VeiculoDto()
             {
+                Id = veiculo.Id,
                 Placa = veiculo.Placa,
                 Marca = veiculo.Marca,
                 Modelo = veiculo.Modelo,
                 Tipo = veiculo.Tipo,
-                HrEntrada = veiculo.HrEntrada,
                 IdEstabelecimento = veiculo.IdEstabelecimento,
-                IdVaga = veiculo.IdVaga
+                IdVaga = veiculo.IdVaga,
+                HrEntrada = veiculo.HrEntrada,
+                HrSaida = veiculo.HrSaida
             };
 
             return veiculoDto;
@@ -43,16 +47,18 @@ namespace estacionamento.Application.Mappers
 
         public IEnumerable<VeiculoDto> MapperListVeiculosDto(IEnumerable<Veiculo> veiculos)
         {
-            var dto = veiculos.Select(v => new VeiculoDto 
+            var dto = veiculos.Select(v => new VeiculoDto
             {
+                Id = v.Id,
                 Placa = v.Placa,
                 Marca = v.Marca,
                 Modelo = v.Modelo,
                 Tipo = v.Tipo,
-                HrEntrada = v.HrEntrada,
                 IdEstabelecimento = v.IdEstabelecimento,
-                IdVaga = v.IdVaga
-            });
+                IdVaga = v.IdVaga,
+                HrEntrada =v.HrEntrada,
+                HrSaida = v.HrSaida,
+            }); 
 
             return dto;
         }

@@ -11,10 +11,12 @@ namespace estacionamento.Api.Controllers
     public class VeiculoController : Controller
     {
         private readonly IApplicationServiceVeiculo applicationServiceVeiculo;
+        private readonly IApplicationServiceEstabelecimento applicationServiceEstabelecimento;
 
-        public VeiculoController(IApplicationServiceVeiculo applicationServiceVeiculo)
+        public VeiculoController(IApplicationServiceVeiculo applicationServiceVeiculo, IApplicationServiceEstabelecimento applicationServiceEstabelecimento)
         {
             this.applicationServiceVeiculo = applicationServiceVeiculo;
+            this.applicationServiceEstabelecimento = applicationServiceEstabelecimento;
         }
 
         // GET api/values
@@ -35,6 +37,16 @@ namespace estacionamento.Api.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] VeiculoDto veiculoDto)
         {
+            var estabelecimento = applicationServiceEstabelecimento.GetById(veiculoDto.IdEstabelecimento);
+
+            veiculoDto.HrEntrada = DateTime.UtcNow;
+            veiculoDto.HrSaida = DateTime.MinValue;
+
+            if (estabelecimento.Id == 0)
+            {
+                return NotFound("Estabelecimento não encontrado");
+            }
+
             try
             {
                 if (veiculoDto == null)
@@ -53,8 +65,15 @@ namespace estacionamento.Api.Controllers
         [HttpPut]
         public ActionResult Put([FromBody] VeiculoDto veiculoDto)
         {
+
+            if (veiculoDto.Id == 0)
+            {
+                return NotFound("Veiculo inexistente");
+            }
+
             try
             {
+
                 if (veiculoDto == null)
                     return NotFound();
 
@@ -68,21 +87,11 @@ namespace estacionamento.Api.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete()]
-        public ActionResult Delete([FromBody] VeiculoDto veiculoDto)
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                if (veiculoDto == null)
-                    return NotFound();
-
-                applicationServiceVeiculo.Remove(veiculoDto);
-                return Ok("Veiculo removido com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            applicationServiceVeiculo.Remove(id);
+            return Ok("Veiculo removido com sucesso!");
         }
     }
 }

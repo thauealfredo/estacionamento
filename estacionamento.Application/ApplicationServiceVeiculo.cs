@@ -3,6 +3,7 @@ using estacionamento.Application.Interfaces;
 using estacionamento.Application.Interfaces.Mappers;
 using estacionamento.Domain.Core.Interfaces.Services;
 using estacionamento.Domain.Entitys;
+using System;
 using System.Collections.Generic;
 
 namespace estacionamento.Application
@@ -37,10 +38,11 @@ namespace estacionamento.Application
             return mapperVeiculo.MapperEntityToDto(veiculo);
         }
 
-        public void Remove(VeiculoDto veiculoDto)
+        public void Remove(int id)
         {
-            var veiculo = mapperVeiculo.MapperDtoToEntity(veiculoDto);
-            serviceVeiculo.Remove(veiculo);
+            var veiculo = serviceVeiculo.GetById(id);
+            veiculo.HrSaida = DateTime.UtcNow;
+            serviceVeiculo.Update(veiculo);
         }
 
         public void Update(VeiculoDto veiculoDto)

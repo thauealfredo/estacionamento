@@ -36,11 +36,12 @@ namespace estacionamento.Api
             var user = Configuration["DBUSER"] ?? "root";
             var password = Configuration["DBPASSWORD"] ?? "usbw";
 
-            
 
-            services.AddDbContext<SqlContext>(options =>
-                  options.UseMySql($"server={host};userid={user};pwd={password};"
-                      + $"port={port};database=DDD"));
+            services.AddDbContext<SqlContext>(options => options.UseInMemoryDatabase(databaseName: "estacionamento"));
+
+            //services.AddDbContext<SqlContext>(options =>
+            //      options.UseMySql($"server={host};userid={user};pwd={password};"
+            //          + $"port={port};database=DDD"));
 
             services.AddScoped<IApplicationServiceEstabelecimento, ApplicationServiceEstabelecimento>();
             services.AddScoped<IApplicationServiceVeiculo, ApplicationServiceVeiculo>();
@@ -74,6 +75,7 @@ namespace estacionamento.Api
 
             app.UseSwaggerUI(c =>
             {
+                c.DefaultModelsExpandDepth(-1);
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ESTACIONAMENTO");
             });
 

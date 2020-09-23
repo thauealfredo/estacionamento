@@ -6,7 +6,7 @@ namespace estacionamento.Domain.Entitys
     {
         public int Id { get; set; }
 
-        public int Placa { get; set; }
+        public string Placa { get; set; }
 
         public string Marca { get; set; }
 

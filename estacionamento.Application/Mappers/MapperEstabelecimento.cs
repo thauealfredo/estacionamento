@@ -14,7 +14,7 @@ namespace estacionamento.Application.Mappers
             {
                 Id = estabelecimentoDto.Id,
                 Nome = estabelecimentoDto.Nome,
-                CNPJ = estabelecimentoDto.CNPJ,
+                CNPJ = (int)estabelecimentoDto.CNPJ,
                 Endereco = estabelecimentoDto.Endereco,
                 Telefone = estabelecimentoDto.Telefone,
                 VagaCarro = estabelecimentoDto.VagaCarro,
@@ -26,18 +26,37 @@ namespace estacionamento.Application.Mappers
 
         public EstabelecimentoDto MapperEntityToDto(Estabelecimento estabelecimento)
         {
-            var estabelecimentoDto = new EstabelecimentoDto()
+            if (estabelecimento == null)
             {
-                Id = estabelecimento.Id,
-                Nome = estabelecimento.Nome,
-                CNPJ = estabelecimento.CNPJ,
-                Endereco = estabelecimento.Endereco,
-                Telefone = estabelecimento.Telefone,
-                VagaCarro = estabelecimento.VagaCarro,
-                VagaMoto = estabelecimento.VagaMoto
-            };
+                var estabelecimentoDto = new EstabelecimentoDto()
+                {
+                    Id = 0,
+                    Nome = "",
+                    CNPJ = 0,
+                    Endereco = "",
+                    Telefone = 0,
+                    VagaCarro = 0,
+                    VagaMoto = 0
+                };
 
-            return estabelecimentoDto;
+                return estabelecimentoDto;
+            }
+            else
+            {
+                var estabelecimentoDto = new EstabelecimentoDto()
+                {
+                    Id = estabelecimento.Id,
+                    Nome = estabelecimento.Nome,
+                    CNPJ = estabelecimento.CNPJ,
+                    Endereco = estabelecimento.Endereco,
+                    Telefone = estabelecimento.Telefone,
+                    VagaCarro = estabelecimento.VagaCarro,
+                    VagaMoto = estabelecimento.VagaMoto
+                };
+
+                return estabelecimentoDto;
+            }
+           
         }
 
         public IEnumerable<EstabelecimentoDto> MapperListEstabelecimentosDto(IEnumerable<Estabelecimento> estabelecimentos)

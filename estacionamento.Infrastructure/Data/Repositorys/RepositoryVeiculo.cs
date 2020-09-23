@@ -41,7 +41,7 @@ namespace estacionamento.Infrastructure.Data.Repositorys
         {
             try
             {
-                sql.Set<TEntity>().Remove(obj);
+                sql.Set<TEntity>().Update(obj);
                 sql.SaveChanges();
             }
             catch (Exception ex)
