@@ -709,23 +709,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Th\\.nuget\\packages\\": {},
+    "C:\\Users\\Thaue\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Infrastructure\\estacionamento.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Infrastructure\\estacionamento.Infrastructure.csproj",
       "projectName": "estacionamento.Infrastructure",
-      "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Infrastructure\\estacionamento.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Th\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Infrastructure\\estacionamento.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\Thaue\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Th\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Thaue\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -738,14 +738,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Application\\estacionamento.Application.csproj": {
-              "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Application\\estacionamento.Application.csproj"
+            "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Application\\estacionamento.Application.csproj": {
+              "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Application\\estacionamento.Application.csproj"
             },
-            "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj": {
-              "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj"
+            "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj": {
+              "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain.Core\\estacionamento.Domain.Core.csproj"
             },
-            "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain\\estacionamento.Domain.csproj": {
-              "projectPath": "C:\\Users\\Th\\Source\\Repos\\estacionamento\\estacionamento.Domain\\estacionamento.Domain.csproj"
+            "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain\\estacionamento.Domain.csproj": {
+              "projectPath": "C:\\Users\\Thaue\\Desktop\\estacionamento\\estacionamento.Domain\\estacionamento.Domain.csproj"
             }
           }
         }

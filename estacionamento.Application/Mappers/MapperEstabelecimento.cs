@@ -14,7 +14,7 @@ namespace estacionamento.Application.Mappers
             {
                 Id = estabelecimentoDto.Id,
                 Nome = estabelecimentoDto.Nome,
-                CNPJ = (int)estabelecimentoDto.CNPJ,
+                CNPJ = estabelecimentoDto.CNPJ,
                 Endereco = estabelecimentoDto.Endereco,
                 Telefone = estabelecimentoDto.Telefone,
                 VagaCarro = estabelecimentoDto.VagaCarro,

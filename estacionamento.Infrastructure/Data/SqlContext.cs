@@ -17,7 +17,7 @@ namespace estacionamento.Infrastructure.Data
 
         public DbSet<Estabelecimento> Estabelecimentos { get; set; }
 
-        public DbSet<Veiculo> Veiuclos { get; set; }
+        public DbSet<Veiculo> Veiculos { get; set; }
 
         public override int SaveChanges()
         {

@@ -6,7 +6,7 @@
 
         public string Nome { get; set; }
 
-        public int CNPJ { get; set; }
+        public long CNPJ { get; set; }
 
         public string Endereco { get; set; }
 
