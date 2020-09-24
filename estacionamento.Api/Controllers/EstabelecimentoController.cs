@@ -65,31 +65,6 @@ namespace estacionamento.Api.Controllers
                 if (estabelecimentoDto == null)
                     return NotFound();
 
-                //if (estabelecimentoDto.Nome == null)
-                //{
-                //    estabelecimentoDto.Nome = dtoOld.Nome;
-                //}
-                //else if (estabelecimentoDto.CNPJ == 0)
-                //{
-                //    estabelecimentoDto.CNPJ = dtoOld.CNPJ;
-                //}
-                //else if (estabelecimentoDto.Endereco == null)
-                //{
-                //    estabelecimentoDto.Endereco = dtoOld.Endereco;
-                //}
-                //else if (estabelecimentoDto.Telefone == 0)
-                //{
-                //    estabelecimentoDto.Telefone = dtoOld.Telefone;
-                //}
-                //else if (estabelecimentoDto.VagaCarro == 0)
-                //{
-                //    estabelecimentoDto.VagaCarro = dtoOld.VagaCarro;
-                //}
-                //else if (estabelecimentoDto.VagaMoto == 0)
-                //{
-                //    estabelecimentoDto.VagaMoto = dtoOld.VagaMoto;
-                //}
-
                 applicationServiceEstabelecimento.Update(estabelecimentoDto);
                 return Ok("Estabelecimento atualizado com sucesso!");
             }

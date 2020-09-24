@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{DC04E167-EFEF-4C57-9440-85E39D571FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estacionamento.Domain", "estacionamento.Domain\estacionamento.Domain.csproj", "{56323411-F145-4A88-B300-D7C68E86E8AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Domain", "estacionamento.Domain\estacionamento.Domain.csproj", "{56323411-F145-4A88-B300-D7C68E86E8AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estacionamento.Domain.Core", "estacionamento.Domain.Core\estacionamento.Domain.Core.csproj", "{A64C2943-2DC2-4CC6-9DC1-4066F24D40BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Domain.Core", "estacionamento.Domain.Core\estacionamento.Domain.Core.csproj", "{A64C2943-2DC2-4CC6-9DC1-4066F24D40BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estacionamento.Domain.Services", "estacionamento.Domain.Services\estacionamento.Domain.Services.csproj", "{DAE86E6B-58CE-4344-9727-8923A039E5F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Domain.Services", "estacionamento.Domain.Services\estacionamento.Domain.Services.csproj", "{DAE86E6B-58CE-4344-9727-8923A039E5F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estacionamento.Infrastructure", "estacionamento.Infrastructure\estacionamento.Infrastructure.csproj", "{697782BE-C5E0-415E-A912-BB196F40ADD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Infrastructure", "estacionamento.Infrastructure\estacionamento.Infrastructure.csproj", "{697782BE-C5E0-415E-A912-BB196F40ADD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estacionamento.Application", "estacionamento.Application\estacionamento.Application.csproj", "{E1013213-8C70-4927-8530-E8868F959E5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Application", "estacionamento.Application\estacionamento.Application.csproj", "{E1013213-8C70-4927-8530-E8868F959E5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estacionamento.Api", "estacionamento.Api\estacionamento.Api.csproj", "{F6865FF0-1723-4CB5-9E6D-669E261904C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Api", "estacionamento.Api\estacionamento.Api.csproj", "{F6865FF0-1723-4CB5-9E6D-669E261904C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

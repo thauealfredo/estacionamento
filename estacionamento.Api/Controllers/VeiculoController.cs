@@ -39,9 +39,6 @@ namespace estacionamento.Api.Controllers
         {
             var estabelecimento = applicationServiceEstabelecimento.GetById(veiculoDto.IdEstabelecimento);
 
-            veiculoDto.HrEntrada = DateTime.UtcNow;
-            veiculoDto.HrSaida = DateTime.MinValue;
-
             if (estabelecimento.Id == 0)
             {
                 return NotFound("Estabelecimento não encontrado");
@@ -65,7 +62,6 @@ namespace estacionamento.Api.Controllers
         [HttpPut]
         public ActionResult Put([FromBody] VeiculoDto veiculoDto)
         {
-
             if (veiculoDto.Id == 0)
             {
                 return NotFound("Veiculo inexistente");
@@ -73,7 +69,6 @@ namespace estacionamento.Api.Controllers
 
             try
             {
-
                 if (veiculoDto == null)
                     return NotFound();
 
