@@ -20,6 +20,6 @@ namespace estacionamento.Application.Dtos
 
         public DateTime HrEntrada { get; set; }
 
-        public DateTime HrSaida { get; set; }
+        public DateTime? HrSaida { get; set; }
     }
 }

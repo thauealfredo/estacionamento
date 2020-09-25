@@ -41,7 +41,7 @@ namespace estacionamento.Application
         public void Remove(int id)
         {
             var veiculo = serviceVeiculo.GetById(id);
-            veiculo.HrSaida = DateTime.UtcNow;
+            veiculo.HrSaida = DateTime.Now.AddHours(1);
             serviceVeiculo.Update(veiculo);
         }
 

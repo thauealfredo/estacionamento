@@ -64,14 +64,24 @@ namespace estacionamento.Infrastructure.Data
                 if (entry.State == EntityState.Added)
                 {
                     entry.Property("HrEntrada").CurrentValue = DateTime.Now;
-                    entry.Property("HrSaida").CurrentValue = DateTime.MinValue;
+
+                    if (entry.Property("HrSaida").CurrentValue !=null)
+                    {
+                        entry.Property("HrSaida").IsModified = false;
+                    }
+                    else
+                    {
+                        entry.Property("HrSaida").CurrentValue = null;
+                    }
+                    
                 }
 
                 if (entry.State == EntityState.Modified)
                 {
-                    if ((DateTime)entry.Property("HrSaida").CurrentValue == DateTime.Now)
+                    if ((DateTime)entry.Property("HrSaida").CurrentValue != null )
+                        
                     {
-                        entry.Property("HrSaida").CurrentValue = DateTime.Now;
+                        entry.Property("HrSaida").CurrentValue = DateTime.Now.AddHours(1);
                     }
                     else
                     {

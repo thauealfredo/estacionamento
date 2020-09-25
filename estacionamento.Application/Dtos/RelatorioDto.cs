@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace estacionamento.Domain.Entitys
+namespace estacionamento.Application.Dtos
 {
-    public class Veiculo
+    public class RelatorioDto
     {
-        public int Id { get; set; }
+
+        public string Nome { get; set; }
+
+        public string Endereco { get; set; }
 
         public string Placa { get; set; }
 
@@ -16,7 +21,6 @@ namespace estacionamento.Domain.Entitys
 
         public int IdVaga { get; set; }
 
-        public int IdEstabelecimento { get; set; }
 
         public DateTime HrEntrada { get; set; }
 

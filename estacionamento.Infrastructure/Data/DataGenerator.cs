@@ -58,7 +58,7 @@ namespace estacionamento.Infrastructure.Data
                         IdVaga = 38,
                         IdEstabelecimento = 1,
                         HrEntrada = DateTime.Now,
-                        HrSaida= DateTime.MinValue
+                        HrSaida = DateTime.Now.AddHours(1)
                     },
                     new Veiculo
                     {
@@ -70,7 +70,7 @@ namespace estacionamento.Infrastructure.Data
                         IdVaga = 25,
                         IdEstabelecimento = 1,
                         HrEntrada = DateTime.Now,
-                        HrSaida = DateTime.MinValue
+                        HrSaida = DateTime.Now.AddHours(1)
                     },
 
                      new Veiculo
@@ -83,7 +83,7 @@ namespace estacionamento.Infrastructure.Data
                          IdVaga = 78,
                          IdEstabelecimento = 2,
                          HrEntrada = DateTime.Now,
-                         HrSaida = DateTime.MinValue
+                         HrSaida = DateTime.Now.AddHours(2)
                      },
                     new Veiculo
                     {
@@ -95,10 +95,20 @@ namespace estacionamento.Infrastructure.Data
                         IdVaga = 34,
                         IdEstabelecimento = 2,
                         HrEntrada = DateTime.Now,
-                        HrSaida = DateTime.MinValue
+                        HrSaida = DateTime.Now.AddHours(2)
+                    }, new Veiculo
+                    {
+                        Id = 5,
+                        Placa = "lfj-7796",
+                        Marca = "honda",
+                        Modelo = "civic",
+                        Tipo = 1,
+                        IdVaga = 78,
+                        IdEstabelecimento = 2,
+                        HrEntrada = DateTime.Now,
+                        HrSaida = null
                     }
-
-                   );
+                  ); 
 
 
                 context.SaveChanges();
