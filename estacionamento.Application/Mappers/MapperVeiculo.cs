@@ -1,7 +1,6 @@
 ﻿using estacionamento.Application.Dtos;
 using estacionamento.Application.Interfaces.Mappers;
 using estacionamento.Domain.Entitys;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +20,7 @@ namespace estacionamento.Application.Mappers
                 IdEstabelecimento = veiculoDto.IdEstabelecimento,
                 IdVaga = veiculoDto.IdVaga,
                 HrEntrada = veiculoDto.HrEntrada,
-                HrSaida = (DateTime)veiculoDto.HrSaida
+                HrSaida = veiculoDto.HrSaida
             };
 
             return veiculo;
@@ -56,9 +55,9 @@ namespace estacionamento.Application.Mappers
                 Tipo = v.Tipo,
                 IdEstabelecimento = v.IdEstabelecimento,
                 IdVaga = v.IdVaga,
-                HrEntrada =v.HrEntrada,
+                HrEntrada = v.HrEntrada,
                 HrSaida = v.HrSaida,
-            }); 
+            });
 
             return dto;
         }

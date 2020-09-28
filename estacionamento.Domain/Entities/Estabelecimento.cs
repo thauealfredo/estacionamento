@@ -1,7 +1,12 @@
-﻿namespace estacionamento.Domain.Entitys
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace estacionamento.Domain.Entitys
 {
     public class Estabelecimento
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string Nome { get; set; }

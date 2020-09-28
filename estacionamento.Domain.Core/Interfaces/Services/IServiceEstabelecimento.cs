@@ -1,17 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using estacionamento.Domain.Entitys;
 
 namespace estacionamento.Domain.Core.Interfaces.Services
 {
-    public interface IServiceEstabelecimento<TEntity> where TEntity : class
+    public interface IServiceEstabelecimento : IServiceBase<Estabelecimento>
     {
-        void Add(TEntity obj);
-
-        void Update(TEntity obj);
-
-        void Remove(TEntity obj);
-
-        IEnumerable<TEntity> GetAll();
-
-        TEntity GetById(int id);
     }
 }

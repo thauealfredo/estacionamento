@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace estacionamento.Domain.Core.Interfaces.Repositorys
+namespace estacionamento.Domain.Core.Interfaces.Services
 {
-    public interface IRepositoryEstabelecimento<TEntity> where TEntity : class
+    public interface IServiceBase<TEntity> where TEntity : class
     {
         void Add(TEntity obj);
 

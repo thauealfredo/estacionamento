@@ -2,17 +2,16 @@
 using estacionamento.Application.Interfaces;
 using estacionamento.Application.Interfaces.Mappers;
 using estacionamento.Domain.Core.Interfaces.Services;
-using estacionamento.Domain.Entitys;
 using System.Collections.Generic;
 
 namespace estacionamento.Application
 {
     public class ApplicationServiceEstabelecimento : IApplicationServiceEstabelecimento
     {
-        private readonly IServiceEstabelecimento<Estabelecimento> serviceEstabelecimento;
+        private readonly IServiceEstabelecimento serviceEstabelecimento;
         private readonly IMapperEstabelecimento mapperEstabelecimento;
 
-        public ApplicationServiceEstabelecimento(IServiceEstabelecimento<Estabelecimento> serviceEstabelecimento, IMapperEstabelecimento mapperEstabelecimento)
+        public ApplicationServiceEstabelecimento(IServiceEstabelecimento serviceEstabelecimento, IMapperEstabelecimento mapperEstabelecimento)
         {
             this.serviceEstabelecimento = serviceEstabelecimento;
             this.mapperEstabelecimento = mapperEstabelecimento;

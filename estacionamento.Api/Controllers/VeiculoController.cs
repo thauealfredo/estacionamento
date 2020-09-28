@@ -58,7 +58,7 @@ namespace estacionamento.Api.Controllers
             }
         }
 
-        // UPDATE -> PUT api/values/5
+        // UPDATE -> 
         [HttpPut]
         public ActionResult Put([FromBody] VeiculoDto veiculoDto)
         {

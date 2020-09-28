@@ -2,7 +2,6 @@
 using estacionamento.Application.Interfaces;
 using estacionamento.Application.Interfaces.Mappers;
 using estacionamento.Domain.Core.Interfaces.Services;
-using estacionamento.Domain.Entitys;
 using System;
 using System.Collections.Generic;
 
@@ -10,10 +9,10 @@ namespace estacionamento.Application
 {
     public class ApplicationServiceVeiculo : IApplicationServiceVeiculo
     {
-        private readonly IServiceVeiculo<Veiculo> serviceVeiculo;
+        private readonly IServiceVeiculo serviceVeiculo;
         private readonly IMapperVeiculo mapperVeiculo;
 
-        public ApplicationServiceVeiculo(IServiceVeiculo<Veiculo> serviceVeiculo, IMapperVeiculo mapperVeiculo)
+        public ApplicationServiceVeiculo(IServiceVeiculo serviceVeiculo, IMapperVeiculo mapperVeiculo)
         {
             this.serviceVeiculo = serviceVeiculo;
             this.mapperVeiculo = mapperVeiculo;
@@ -47,7 +46,39 @@ namespace estacionamento.Application
 
         public void Update(VeiculoDto veiculoDto)
         {
+           // var veicOld = serviceVeiculo.GetById(veiculoDto.Id);
+
+            /// dados atuais
             var veiculo = mapperVeiculo.MapperDtoToEntity(veiculoDto);
+
+            //if (veiculo.Placa == null)
+            //{
+            //    veiculo.Placa = veicOld.Placa;
+            //}
+            //if (veiculo.Marca == null)
+            //{
+            //    veiculo.Marca = veicOld.Marca;
+            //}
+            //if (veiculo.Modelo == null)
+            //{
+            //    veiculo.Modelo = veicOld.Modelo;
+            //}
+
+            //if (veiculo.Tipo == 0)
+            //{
+            //    veiculo.Tipo = veicOld.Tipo;
+            //}
+
+            //if (veiculo.IdVaga == 0)
+            //{
+            //    veiculo.IdVaga = veicOld.IdVaga;
+            //}
+
+            //if (veiculo.IdEstabelecimento == 0)
+            //{
+            //    veiculo.IdEstabelecimento = veicOld.IdEstabelecimento;
+            //}
+
             serviceVeiculo.Update(veiculo);
         }
     }

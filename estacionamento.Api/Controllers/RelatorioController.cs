@@ -1,10 +1,9 @@
-﻿using estacionamento.Application.Interfaces;
+﻿using estacionamento.Application.Dtos;
+using estacionamento.Application.Interfaces;
 using estacionamento.Domain.Entitys;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace estacionamento.Api.Controllers
 {
@@ -27,17 +26,16 @@ namespace estacionamento.Api.Controllers
         {
             var veiculosAll = applicationServiceVeiculo.GetAll();
 
-            List<Relatorio> listaRelatorio = new List<Relatorio>();
+            List<RelatorioDto> listaRelatorio = new List<RelatorioDto>();
 
-            foreach (var item in veiculosAll)
+            foreach (var veiculoOne in veiculosAll)
             {
-                    var veiculoOne = applicationServiceVeiculo.GetById(item.Id);
-                    var estabelecimento = applicationServiceEstabelecimento.GetById(item.IdEstabelecimento);
+                var estabelecimento = applicationServiceEstabelecimento.GetById(veiculoOne.IdEstabelecimento);
 
-                var relatorio = new Relatorio
+                var relatorio = new RelatorioDto
                 {
-                    Nome = estabelecimento.Nome,
-                    Endereco = estabelecimento.Endereco,
+                    NomeEstabelecimento = estabelecimento.Nome,
+                    EnderecoEstabelecimento = estabelecimento.Endereco,
                     Placa = veiculoOne.Placa,
                     Marca = veiculoOne.Marca,
                     Modelo = veiculoOne.Modelo,
@@ -48,12 +46,8 @@ namespace estacionamento.Api.Controllers
                 };
 
                 listaRelatorio.Add(relatorio);
-
-          
-              
             }
             return Ok(listaRelatorio);
-
         }
 
         [HttpGet("entradaSaida")]
@@ -61,19 +55,44 @@ namespace estacionamento.Api.Controllers
         {
             var entrada = applicationServiceVeiculo.GetAll();
 
-            var count = 0;
+            var countSaida = 0;
+            var countEntrada = 0;
+            List<SaidaEntradaDto> listaRelatorio = new List<SaidaEntradaDto>();
 
             foreach (var item in entrada)
             {
+                var estabelecimento = applicationServiceEstabelecimento.GetById(item.IdEstabelecimento);
+               
+
+                if (item.IdEstabelecimento > item.IdEstabelecimento + 1)
+                {
+                    countSaida = 0;
+                    countEntrada=0;
+                }
+
                 if (item.HrSaida != null)
                 {
-                    count++;
+                    countSaida++;
+                    countEntrada++;
                 }
+                else
+                {
+                    countEntrada++;
+                }
+
+                var relatorio = new SaidaEntradaDto
+                {
+                    NomeEstabelecimento = estabelecimento.Nome,
+                    EnderecoEstabelecimento = estabelecimento.Endereco,
+                    VeiculosEntraram = countEntrada,
+                    VeiculosSairam = countSaida
+                };
+
+                listaRelatorio.Add(relatorio);
             }
-
-            return Ok("Veiculos contabilizados: "+count);
+            
+            return Ok(listaRelatorio);
         }
-
 
         [HttpGet("entradaSaidaHora")]
         public ActionResult EntradaSaidaHora()
@@ -89,7 +108,6 @@ namespace estacionamento.Api.Controllers
             {
                 if (item.HrSaida != null)
                 {
-
                     //veiculos que sairam
                     count++;
 

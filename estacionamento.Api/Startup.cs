@@ -2,12 +2,11 @@ using estacionamento.Application;
 using estacionamento.Application.Interfaces;
 using estacionamento.Application.Interfaces.Mappers;
 using estacionamento.Application.Mappers;
-using estacionamento.Domain.Core.Interfaces.Repositorys;
+using estacionamento.Domain.Core.Interfaces.Repositories;
 using estacionamento.Domain.Core.Interfaces.Services;
-using estacionamento.Domain.Entitys;
 using estacionamento.Domain.Services;
 using estacionamento.Infrastructure.Data;
-using estacionamento.Infrastructure.Data.Repositorys;
+using estacionamento.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -36,8 +35,9 @@ namespace estacionamento.Api
             var user = Configuration["DBUSER"] ?? "root";
             var password = Configuration["DBPASSWORD"] ?? "usbw";
 
+            services.AddDbContext<SqlContext>(options => options.UseInMemoryDatabase(databaseName: "estacionamento").EnableSensitiveDataLogging());
 
-            services.AddDbContext<SqlContext>(options => options.UseInMemoryDatabase(databaseName: "estacionamento"));
+            _ = services.AddScoped<SqlContext>();
 
             //services.AddDbContext<SqlContext>(options =>
             //      options.UseMySql($"server={host};userid={user};pwd={password};"
@@ -46,18 +46,25 @@ namespace estacionamento.Api
             services.AddScoped<IApplicationServiceEstabelecimento, ApplicationServiceEstabelecimento>();
             services.AddScoped<IApplicationServiceVeiculo, ApplicationServiceVeiculo>();
 
-            services.AddScoped<IServiceEstabelecimento<Estabelecimento>, ServiceEstabelecimento<Estabelecimento>>();
-            services.AddScoped<IServiceVeiculo<Veiculo>, ServiceVeiculo<Veiculo>>();
+            services.AddScoped<IServiceEstabelecimento, ServiceEstabelecimento>();
+            services.AddScoped<IServiceVeiculo, ServiceVeiculo>();
 
-            services.AddScoped<IRepositoryEstabelecimento<Estabelecimento>, RepositoryEstabelecimento<Estabelecimento>>();
-            services.AddScoped<IRepositoryVeiculo<Veiculo>, RepositoryVeiculo<Veiculo>>();
+            services.AddScoped<IRepositoryEstabelecimento, RepositoryEstabelecimento>();
+            services.AddScoped<IRepositoryVeiculo, RepositoryVeiculo>();
 
             services.AddScoped<IMapperEstabelecimento, MapperEstabelecimento>();
             services.AddScoped<IMapperVeiculo, MapperVeiculo>();
 
+
             services.AddControllers();
+            //services.AddControllers(options =>
+            //{
+            //    options.RespectBrowserAcceptHeader = true;
+            //}).AddXmlSerializerFormatters();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddSwaggerGen(c =>
+           
+           services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ESTACIONAMENTO", Version = "v1" });
             });

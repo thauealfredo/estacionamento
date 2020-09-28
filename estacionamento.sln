@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estacionamento.Api", "estacionamento.Api\estacionamento.Api.csproj", "{F6865FF0-1723-4CB5-9E6D-669E261904C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estacionamento.Api.Test", "estacionamento.Api.Test\estacionamento.Api.Test.csproj", "{F2D852D0-3D43-45FD-8B84-7006155CF763}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{F6865FF0-1723-4CB5-9E6D-669E261904C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6865FF0-1723-4CB5-9E6D-669E261904C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6865FF0-1723-4CB5-9E6D-669E261904C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D852D0-3D43-45FD-8B84-7006155CF763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D852D0-3D43-45FD-8B84-7006155CF763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D852D0-3D43-45FD-8B84-7006155CF763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D852D0-3D43-45FD-8B84-7006155CF763}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{697782BE-C5E0-415E-A912-BB196F40ADD7} = {DC04E167-EFEF-4C57-9440-85E39D571FAB}
 		{E1013213-8C70-4927-8530-E8868F959E5E} = {00959B80-276F-4192-B189-D6E2F1B8FC67}
 		{F6865FF0-1723-4CB5-9E6D-669E261904C2} = {F98C1D5D-DA13-4A92-B8C0-81E418FBFE62}
+		{F2D852D0-3D43-45FD-8B84-7006155CF763} = {F98C1D5D-DA13-4A92-B8C0-81E418FBFE62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FDC38ECB-7E98-4F15-8945-0074F2223205}

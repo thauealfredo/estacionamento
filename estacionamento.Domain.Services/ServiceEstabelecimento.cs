@@ -1,41 +1,17 @@
-﻿using estacionamento.Domain.Core.Interfaces.Repositorys;
+﻿using estacionamento.Domain.Core.Interfaces.Repositories;
 using estacionamento.Domain.Core.Interfaces.Services;
-using System.Collections.Generic;
+using estacionamento.Domain.Entitys;
 
 namespace estacionamento.Domain.Services
 {
-    public class ServiceEstabelecimento<TEntity> : IServiceEstabelecimento<TEntity> where TEntity : class
+    public class ServiceEstabelecimento : ServiceBase<Estabelecimento>, IServiceEstabelecimento
     {
-        private readonly IRepositoryEstabelecimento<TEntity> repository;
+        private readonly IRepositoryEstabelecimento repositoryEstabelecimento;
 
-        public ServiceEstabelecimento(IRepositoryEstabelecimento<TEntity> repository)
+        public ServiceEstabelecimento(IRepositoryEstabelecimento repositoryEstabelecimento)
+            : base(repositoryEstabelecimento)
         {
-            this.repository = repository;
-        }
-
-        public void Add(TEntity obj)
-        {
-            repository.Add(obj);
-        }
-
-        public IEnumerable<TEntity> GetAll()
-        {
-            return repository.GetAll();
-        }
-
-        public TEntity GetById(int id)
-        {
-            return repository.GetById(id);
-        }
-
-        public void Remove(TEntity obj)
-        {
-            repository.Remove(obj);
-        }
-
-        public void Update(TEntity obj)
-        {
-            repository.Update(obj);
+            this.repositoryEstabelecimento = repositoryEstabelecimento;
         }
     }
 }
