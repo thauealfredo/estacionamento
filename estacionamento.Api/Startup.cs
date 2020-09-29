@@ -34,18 +34,9 @@ namespace estacionamento.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var host = Configuration["DBHOST"] ?? "localhost";
-            var port = Configuration["DBPORT"] ?? "3306";
-            var user = Configuration["DBUSER"] ?? "root";
-            var password = Configuration["DBPASSWORD"] ?? "usbw";
-
             services.AddDbContext<SqlContext>(options => options.UseInMemoryDatabase(databaseName: "estacionamento").EnableSensitiveDataLogging());
 
             services.AddScoped<SqlContext>();
-
-            //services.AddDbContext<SqlContext>(options =>
-            //      options.UseMySql($"server={host};userid={user};pwd={password};"
-            //          + $"port={port};database=DDD"));
 
             services.AddScoped<IApplicationServiceEstabelecimento, ApplicationServiceEstabelecimento>();
             services.AddScoped<IApplicationServiceVeiculo, ApplicationServiceVeiculo>();
@@ -76,6 +67,17 @@ namespace estacionamento.Api
                      Title = "ESTACIONAMENTO",
                      Version = "v1",
                      Description = "Management parking system",
+                     Contact = new OpenApiContact
+                     {
+                         Name = "Thauê ALfredo F. Lima",
+                         Email = "thaue159@gmail.com",
+                         Url = new Uri("https://www.linkedin.com/in/thaue-alfredo-ferreira-lima-62504619b/")
+                     },
+                     License = new OpenApiLicense
+                     {
+                         Name = "MIT",
+                         Url = new Uri("https://github.com/thauealfredo/estacionamento/blob/master/LICENSE")
+                     }
                  });
 
                  var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -84,9 +86,7 @@ namespace estacionamento.Api
 
                  opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                  {
-                     Description = @"JWT Authorization header using the Bearer scheme. 
-                      Enter 'Bearer' [space] and then your token in the text input below.
-                     Example: 'Bearer 12345abcdef'",
+                     Description = @"JWT Authorization header using the Bearer scheme. Example: 'Bearer 12345abcdef'",
                      Name = "Authorization",
                      In = ParameterLocation.Header,
                      Type = SecuritySchemeType.ApiKey,
@@ -109,7 +109,7 @@ namespace estacionamento.Api
                         },
                         new List<string>()
                       }
-                    });
+                 });
              });
         }
 
