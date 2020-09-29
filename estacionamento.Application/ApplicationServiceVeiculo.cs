@@ -52,7 +52,7 @@ namespace estacionamento.Application
 
         public void Update(VeiculoDto veiculoDto)
         {
-           // var veicOld = serviceVeiculo.GetById(veiculoDto.Id);
+            // var veicOld = serviceVeiculo.GetById(veiculoDto.Id);
 
             /// dados atuais
             var veiculo = mapperVeiculo.MapperDtoToEntity(veiculoDto);

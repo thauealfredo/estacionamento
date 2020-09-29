@@ -8,6 +8,7 @@ namespace estacionamento.Api.Controllers
 {
     [Route("estabelecimento")]
     [ApiController]
+    [Produces("application/json", "application/xml")]
     public class EstabelecimentoController : Controller
     {
         private readonly IApplicationServiceEstabelecimento applicationServiceEstabelecimento;
@@ -18,20 +19,42 @@ namespace estacionamento.Api.Controllers
         }
 
         // GET api/values
+        /// <summary>
+        /// Lista os estabelecimentos.
+        /// </summary>
         [HttpGet()]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<EstabelecimentoDto> Get()
         {
             return Ok(applicationServiceEstabelecimento.GetAll());
         }
 
         // GET api/values/byid
+        /// <summary>
+        /// Retorna o estabelecimento escolhido.
+        /// </summary>
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<EstabelecimentoDto> Get(int id)
         {
             return Ok(applicationServiceEstabelecimento.GetById(id));
         }
 
         // POST api/values
+        /// <summary>
+        /// Registra novos estabelecimentos.
+        /// </summary>
+        ///  ///   /// <remarks>
+        /// Exemplo:
+        ///
+        ///     {
+        ///        "nome": "EstacioneAq",
+        ///        "cnpj": 12345678910111,
+        ///        "endereco": "R. Alameda santos, 514 ",
+        ///        "telefone": 1334642658,
+        ///        "vagaCarro": 80,
+        ///        "vagaMoto": 30
+        ///     }
+        ///
+        /// </remarks>
         [HttpPost]
         public ActionResult Post([FromBody] EstabelecimentoDto estabelecimentoDto)
         {
@@ -50,6 +73,18 @@ namespace estacionamento.Api.Controllers
         }
 
         // UPDATE -
+        /// <summary>
+        /// Atualiza um estabelecimento.
+        /// </summary>
+        ///   /// <remarks>
+        /// Exemplo:
+        ///
+        ///     {
+        ///        "id"
+        ///        "nome": "EstacioneAqui"
+        ///     }
+        ///
+        /// </remarks>
         [HttpPut()]
         public ActionResult Put([FromBody] EstabelecimentoDto estabelecimentoDto)
         {
@@ -74,7 +109,10 @@ namespace estacionamento.Api.Controllers
             }
         }
 
-        // DELETE api/values/5
+        // DELETE
+        /// <summary>
+        /// Apaga um estabelecimento.
+        /// </summary>
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

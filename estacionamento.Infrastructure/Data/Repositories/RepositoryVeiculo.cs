@@ -27,9 +27,10 @@ namespace estacionamento.Infrastructure.Data.Repositories
                 throw ex;
             }
         }
+
         public IEnumerable<Veiculo> GetByIdEstabelecimento(int id)
         {
-            return sqlContext.Set<Veiculo>().ToList().Where(c=> c.IdEstabelecimento == id);
+            return sqlContext.Set<Veiculo>().ToList().Where(c => c.IdEstabelecimento == id);
         }
     }
 }

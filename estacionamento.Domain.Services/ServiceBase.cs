@@ -6,7 +6,6 @@ namespace estacionamento.Domain.Services
 {
     public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class
     {
-
         private readonly IRepositoryBase<TEntity> repository;
 
         public ServiceBase(IRepositoryBase<TEntity> repository)

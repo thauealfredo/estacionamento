@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace estacionamento.Application.Dtos
+﻿namespace estacionamento.Application.Dtos
 {
     public class SaidaEntradaDto
     {

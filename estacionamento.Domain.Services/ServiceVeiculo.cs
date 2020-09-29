@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace estacionamento.Domain.Services
 {
-    public class ServiceVeiculo: ServiceBase<Veiculo>, IServiceVeiculo
+    public class ServiceVeiculo : ServiceBase<Veiculo>, IServiceVeiculo
     {
         private readonly IRepositoryVeiculo repositoryVeiculo;
 

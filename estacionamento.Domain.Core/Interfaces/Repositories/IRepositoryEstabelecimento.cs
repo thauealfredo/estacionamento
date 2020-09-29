@@ -1,5 +1,4 @@
-﻿
-using estacionamento.Domain.Entitys;
+﻿using estacionamento.Domain.Entitys;
 
 namespace estacionamento.Domain.Core.Interfaces.Repositories
 {

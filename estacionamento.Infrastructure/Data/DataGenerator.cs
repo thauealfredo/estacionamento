@@ -45,8 +45,6 @@ namespace estacionamento.Infrastructure.Data
                         VagaMoto = 40
                     });
 
-
-
                 context.Veiculos.AddRange(
                     new Veiculo
                     {
@@ -108,8 +106,7 @@ namespace estacionamento.Infrastructure.Data
                         HrEntrada = DateTime.Now,
                         HrSaida = null
                     }
-                  ); 
-
+                  );
 
                 context.SaveChanges();
             }

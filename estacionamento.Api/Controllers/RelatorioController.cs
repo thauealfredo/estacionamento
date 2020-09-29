@@ -8,6 +8,7 @@ namespace estacionamento.Api.Controllers
 {
     [ApiController]
     [Route("relatorio")]
+    [Produces("application/json", "application/xml")]
     public class RelatorioController : Controller
     {
         private readonly IApplicationServiceEstabelecimento applicationServiceEstabelecimento;
@@ -20,8 +21,11 @@ namespace estacionamento.Api.Controllers
             this.applicationServiceVeiculo = applicationServiceVeiculo;
         }
 
+        /// <summary>
+        /// Gera um relatório de todos os veiculos cadastrados.
+        /// </summary>
         [HttpGet()]
-        public ActionResult Get()
+        public ActionResult<RelatorioDto> Get()
         {
             var veiculosAll = applicationServiceVeiculo.GetAll();
 
@@ -49,8 +53,11 @@ namespace estacionamento.Api.Controllers
             return Ok(listaRelatorio);
         }
 
+        /// <summary>
+        /// Gera relatório de entrada e saida por estabelecimento.
+        /// </summary>
         [HttpGet("entradaSaida")]
-        public ActionResult EntradaSaida()
+        public ActionResult<SaidaEntradaDto> EntradaSaida()
         {
             var entrada = applicationServiceEstabelecimento.GetAll();
 
@@ -91,8 +98,11 @@ namespace estacionamento.Api.Controllers
             return Ok(listaRelatorio);
         }
 
+        /// <summary>
+        /// Gera uma média de entrada por hora em cada estabelecimento.
+        /// </summary>
         [HttpGet("entradaSaidaHora")]
-        public ActionResult EntradaSaidaHora()
+        public ActionResult<SaidaEntradaHoraDto> EntradaSaidaHora()
         {
             var entrada = applicationServiceEstabelecimento.GetAll();
 

@@ -1,8 +1,5 @@
 ﻿using estacionamento.Domain.Entitys;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Linq;
 
 namespace estacionamento.Infrastructure.Data
 {
@@ -11,6 +8,7 @@ namespace estacionamento.Infrastructure.Data
         public SqlContext()
         {
         }
+
         public SqlContext(DbContextOptions<SqlContext> options) : base(options)
         {
         }

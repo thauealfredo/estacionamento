@@ -8,6 +8,7 @@ namespace estacionamento.Api.Controllers
 {
     [Route("veiculo")]
     [ApiController]
+    [Produces("application/json", "application/xml")]
     public class VeiculoController : Controller
     {
         private readonly IApplicationServiceVeiculo applicationServiceVeiculo;
@@ -19,21 +20,45 @@ namespace estacionamento.Api.Controllers
             this.applicationServiceEstabelecimento = applicationServiceEstabelecimento;
         }
 
-        // GET api/values
+        // GET
+        /// <summary>
+        /// Lista todos os veiculos cadastrados.
+        /// </summary>
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<VeiculoDto> Get()
         {
             return Ok(applicationServiceVeiculo.GetAll());
         }
 
-        // GET api/values/byid
+        // GET
+        /// <summary>
+        /// Retorna um veiculo especifico
+        /// </summary>
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<VeiculoDto> Get(int id)
         {
             return Ok(applicationServiceVeiculo.GetById(id));
         }
 
-        // POST api/values
+        // POST
+        /// <summary>
+        /// Registra um novo veiculo.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     ##Tipo 1 = carro;
+        ///     ##Tipo 2 = moto;
+        ///     {
+        ///        "placa": "abc-2586",
+        ///        "marca": "audi",
+        ///        "modelo": "a5",
+        ///        "tipo": 1,
+        ///        "idVaga": 38,
+        ///        "idEstabelecimento": 1
+        ///     }
+        ///
+        /// </remarks>
         [HttpPost]
         public ActionResult Post([FromBody] VeiculoDto veiculoDto)
         {
@@ -58,7 +83,20 @@ namespace estacionamento.Api.Controllers
             }
         }
 
-        // UPDATE -> 
+        // UPDATE ->
+        /// <summary>
+        /// Atualiza um veiculo
+        /// </summary>
+        ///   /// <remarks>
+        /// Exemplo:
+        ///
+        ///     {
+        ///        "id": "1",
+        ///        "marca": "citroen",
+        ///        "modelo": "c3",
+        ///     }
+        ///
+        /// </remarks>
         [HttpPut]
         public ActionResult Put([FromBody] VeiculoDto veiculoDto)
         {
@@ -81,7 +119,10 @@ namespace estacionamento.Api.Controllers
             }
         }
 
-        // DELETE api/values/5
+        // DELETE
+        /// <summary>
+        /// Efetua a saida do veiculo do estabelecimento.
+        /// </summary>
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

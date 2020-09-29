@@ -56,7 +56,6 @@ namespace estacionamento.Application.Mappers
 
                 return estabelecimentoDto;
             }
-           
         }
 
         public IEnumerable<EstabelecimentoDto> MapperListEstabelecimentosDto(IEnumerable<Estabelecimento> estabelecimentos)
