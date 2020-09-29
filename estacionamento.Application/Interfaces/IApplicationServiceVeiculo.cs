@@ -14,5 +14,7 @@ namespace estacionamento.Application.Interfaces
         IEnumerable<VeiculoDto> GetAll();
 
         VeiculoDto GetById(int id);
+
+        IEnumerable<VeiculoDto> GetByIdEstabelecimento(int id);
     }
 }

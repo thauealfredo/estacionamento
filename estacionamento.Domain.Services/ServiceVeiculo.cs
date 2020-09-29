@@ -14,5 +14,9 @@ namespace estacionamento.Domain.Services
             this.repositoryVeiculo = repositoryVeiculo;
         }
 
+        public IEnumerable<Veiculo> GetByIdEstabelecimento(int id)
+        {
+            return repositoryVeiculo.GetByIdEstabelecimento(id);
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using estacionamento.Application.Dtos;
 using estacionamento.Application.Interfaces;
-using estacionamento.Domain.Entitys;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,21 +27,21 @@ namespace estacionamento.Api.Controllers
 
             List<RelatorioDto> listaRelatorio = new List<RelatorioDto>();
 
-            foreach (var veiculoOne in veiculosAll)
+            foreach (var veic in veiculosAll)
             {
-                var estabelecimento = applicationServiceEstabelecimento.GetById(veiculoOne.IdEstabelecimento);
+                var estabelecimentoOne = applicationServiceEstabelecimento.GetById(veic.IdEstabelecimento);
 
                 var relatorio = new RelatorioDto
                 {
-                    NomeEstabelecimento = estabelecimento.Nome,
-                    EnderecoEstabelecimento = estabelecimento.Endereco,
-                    Placa = veiculoOne.Placa,
-                    Marca = veiculoOne.Marca,
-                    Modelo = veiculoOne.Modelo,
-                    Tipo = veiculoOne.Tipo,
-                    HrEntrada = veiculoOne.HrEntrada,
-                    HrSaida = veiculoOne.HrSaida,
-                    IdVaga = veiculoOne.IdVaga
+                    NomeEstabelecimento = estabelecimentoOne.Nome,
+                    EnderecoEstabelecimento = estabelecimentoOne.Endereco,
+                    Placa = veic.Placa,
+                    Marca = veic.Marca,
+                    Modelo = veic.Modelo,
+                    Tipo = veic.Tipo,
+                    HrEntrada = veic.HrEntrada,
+                    HrSaida = veic.HrSaida,
+                    IdVaga = veic.IdVaga
                 };
 
                 listaRelatorio.Add(relatorio);
@@ -53,77 +52,84 @@ namespace estacionamento.Api.Controllers
         [HttpGet("entradaSaida")]
         public ActionResult EntradaSaida()
         {
-            var entrada = applicationServiceVeiculo.GetAll();
+            var entrada = applicationServiceEstabelecimento.GetAll();
 
-            var countSaida = 0;
-            var countEntrada = 0;
             List<SaidaEntradaDto> listaRelatorio = new List<SaidaEntradaDto>();
 
             foreach (var item in entrada)
             {
-                var estabelecimento = applicationServiceEstabelecimento.GetById(item.IdEstabelecimento);
-               
+                /// lista veiculos pelo id do estabelecimento
+                var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(item.Id);
 
-                if (item.IdEstabelecimento > item.IdEstabelecimento + 1)
-                {
-                    countSaida = 0;
-                    countEntrada=0;
-                }
+                var countSaida = 0;
+                var countEntrada = 0;
 
-                if (item.HrSaida != null)
+                foreach (var it in veiculoOne)
                 {
-                    countSaida++;
-                    countEntrada++;
-                }
-                else
-                {
-                    countEntrada++;
+                    if (it.HrSaida != null)
+                    {
+                        countSaida++;
+                        countEntrada++;
+                    }
+                    else
+                    {
+                        countEntrada++;
+                    }
                 }
 
                 var relatorio = new SaidaEntradaDto
                 {
-                    NomeEstabelecimento = estabelecimento.Nome,
-                    EnderecoEstabelecimento = estabelecimento.Endereco,
+                    NomeEstabelecimento = item.Nome,
+                    EnderecoEstabelecimento = item.Endereco,
                     VeiculosEntraram = countEntrada,
                     VeiculosSairam = countSaida
                 };
 
                 listaRelatorio.Add(relatorio);
             }
-            
+
             return Ok(listaRelatorio);
         }
 
         [HttpGet("entradaSaidaHora")]
         public ActionResult EntradaSaidaHora()
         {
-            var entrada = applicationServiceVeiculo.GetAll();
+            var entrada = applicationServiceEstabelecimento.GetAll();
 
-            //float hrAtual = DateTime.Now.AddHours(1).Hour;
-            float result = 0;
-            float count = 0;
-            float sum = 0;
+            List<SaidaEntradaHoraDto> listaRelatorio = new List<SaidaEntradaHoraDto>();
 
             foreach (var item in entrada)
             {
-                if (item.HrSaida != null)
+                /// lista veiculos pelo id do estabelecimento
+                var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(item.Id);
+
+                float result = 0;
+                float count = 0; // quantidade de carros
+                float sum = 0;
+
+                /// para cada veiculo com o mesmo id do estabelecimento
+                foreach (var it in veiculoOne)
                 {
-                    //veiculos que sairam
-                    count++;
-
-                    //quantidade de horas que o veiculo ficou
-                    TimeSpan ts = (TimeSpan)(item.HrSaida - item.HrEntrada);
-
-                    var horasTotais = (float)ts.TotalHours;
-
-                    sum = horasTotais + sum;
-
-                    // result = (sum / hrAtual) *count;
-                    result = (sum / count);
+                    if (it.HrSaida != null)
+                    {
+                        TimeSpan ts = (TimeSpan)(it.HrSaida - it.HrEntrada);
+                        var horasTotais = (int)ts.TotalHours;
+                        sum = horasTotais + sum;
+                        count++;
+                        result = (sum / count);
+                    }
                 }
+
+                var relatorio = new SaidaEntradaHoraDto
+                {
+                    NomeEstabelecimento = item.Nome,
+                    EnderecoEstabelecimento = item.Endereco,
+                    VeiculosPorHora = result
+                };
+                listaRelatorio.Add(relatorio);
             }
 
-            return Ok("Média de veiculos por hora: " + result);
+            return Ok(listaRelatorio);
         }
     }
 }

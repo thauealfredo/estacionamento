@@ -37,6 +37,12 @@ namespace estacionamento.Application
             return mapperVeiculo.MapperEntityToDto(veiculo);
         }
 
+        public IEnumerable<VeiculoDto> GetByIdEstabelecimento(int id)
+        {
+            var veiculos = serviceVeiculo.GetByIdEstabelecimento(id);
+            return mapperVeiculo.MapperListVeiculosDto(veiculos);
+        }
+
         public void Remove(int id)
         {
             var veiculo = serviceVeiculo.GetById(id);
