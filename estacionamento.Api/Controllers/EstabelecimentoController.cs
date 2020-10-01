@@ -1,5 +1,6 @@
 ﻿using estacionamento.Application.Dtos;
 using estacionamento.Application.Interfaces;
+using estacionamento.Domain.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace estacionamento.Api.Controllers
         {
             this.applicationServiceEstabelecimento = applicationServiceEstabelecimento;
         }
+
 
         // GET api/values
         /// <summary>
@@ -88,7 +90,6 @@ namespace estacionamento.Api.Controllers
         [HttpPut()]
         public ActionResult Put([FromBody] EstabelecimentoDto estabelecimentoDto)
         {
-            //var dtoOld = applicationServiceEstabelecimento.GetById(estabelecimentoDto.Id);
 
             if (estabelecimentoDto.Id == 0)
             {
