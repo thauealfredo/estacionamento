@@ -65,7 +65,7 @@ namespace estacionamento.Api.Controllers
 
             foreach (var item in entrada)
             {
-                /// lista veiculos pelo id do estabelecimento
+                // lista veiculos pelo id do estabelecimento
                 var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(item.Id);
 
                 var countSaida = 0;
@@ -110,14 +110,14 @@ namespace estacionamento.Api.Controllers
 
             foreach (var item in entrada)
             {
-                /// lista veiculos pelo id do estabelecimento
+                // lista veiculos pelo id do estabelecimento
                 var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(item.Id);
 
                 float result = 0;
                 float count = 0; // quantidade de carros
                 float sum = 0;
 
-                /// para cada veiculo com o mesmo id do estabelecimento
+                // para cada veiculo com o mesmo id do estabelecimento
                 foreach (var it in veiculoOne)
                 {
                     if (it.HrSaida != null)

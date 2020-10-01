@@ -48,7 +48,9 @@ namespace estacionamento.Infrastructure.Data.Repositories
 
         public TEntity GetById(int id)
         {
-            return sqlContext.Set<TEntity>().Find(id);
+            var entity = sqlContext.Set<TEntity>().Find(id);
+            sqlContext.Entry(entity).State = EntityState.Detached;
+            return entity;
         }
 
         public void Update(TEntity obj)

@@ -45,7 +45,37 @@ namespace estacionamento.Application
 
         public void Update(EstabelecimentoDto estabelecimentoDto)
         {
+            var estabOld = serviceEstabelecimento.GetById(estabelecimentoDto.Id);
+
             var estabelecimento = mapperEstabelecimento.MapperDtoToEntity(estabelecimentoDto);
+
+            if (estabelecimento.Nome == null)
+            {
+                estabelecimento.Nome = estabOld.Nome;
+            }
+            if (estabelecimento.Endereco == null)
+            {
+                estabelecimento.Endereco = estabOld.Endereco;
+            }
+            if (estabelecimento.CNPJ == 0)
+            {
+                estabelecimento.CNPJ = estabOld.CNPJ;
+            }
+            if (estabelecimento.Telefone == 0)
+            {
+                estabelecimento.Telefone = estabOld.Telefone;
+            }
+
+            if (estabelecimento.VagaCarro == 0)
+            {
+                estabelecimento.VagaCarro = estabOld.VagaCarro;
+            }
+
+            if (estabelecimento.VagaMoto == 0)
+            {
+                estabelecimento.VagaMoto = estabOld.VagaMoto;
+            }
+
             serviceEstabelecimento.Update(estabelecimento);
         }
     }

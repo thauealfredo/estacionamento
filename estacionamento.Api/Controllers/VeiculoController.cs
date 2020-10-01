@@ -91,9 +91,9 @@ namespace estacionamento.Api.Controllers
         /// Exemplo:
         ///
         ///     {
-        ///        "id": "1",
+        ///        "id": 1,
         ///        "marca": "citroen",
-        ///        "modelo": "c3",
+        ///        "modelo": "c3"
         ///     }
         ///
         /// </remarks>
@@ -109,6 +109,8 @@ namespace estacionamento.Api.Controllers
             {
                 if (veiculoDto == null)
                     return NotFound();
+
+                var id = veiculoDto.Id;
 
                 applicationServiceVeiculo.Update(veiculoDto);
                 return Ok("Veiculo atualizado com sucesso!");
