@@ -1,9 +1,7 @@
 ﻿using estacionamento.Application.Dtos;
 using estacionamento.Application.Interfaces;
-using estacionamento.Domain.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace estacionamento.Api.Controllers
 {
@@ -18,7 +16,6 @@ namespace estacionamento.Api.Controllers
         {
             this.applicationServiceEstabelecimento = applicationServiceEstabelecimento;
         }
-
 
         // GET api/values
         /// <summary>
@@ -82,7 +79,7 @@ namespace estacionamento.Api.Controllers
         /// Exemplo:
         ///
         ///     {
-        ///        "id"
+        ///        "id": 1
         ///        "nome": "EstacioneAqui"
         ///     }
         ///
@@ -90,7 +87,6 @@ namespace estacionamento.Api.Controllers
         [HttpPut()]
         public ActionResult Put([FromBody] EstabelecimentoDto estabelecimentoDto)
         {
-
             if (estabelecimentoDto.Id == 0)
             {
                 return NotFound("Estabelecimento inexistente");

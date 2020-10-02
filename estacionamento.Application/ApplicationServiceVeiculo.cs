@@ -1,7 +1,8 @@
-﻿using estacionamento.Application.Dtos;
+﻿using AutoMapper;
+using estacionamento.Application.Dtos;
 using estacionamento.Application.Interfaces;
-using estacionamento.Application.Interfaces.Mappers;
 using estacionamento.Domain.Core.Interfaces.Services;
+using estacionamento.Domain.Entitys;
 using System;
 using System.Collections.Generic;
 
@@ -10,37 +11,37 @@ namespace estacionamento.Application
     public class ApplicationServiceVeiculo : IApplicationServiceVeiculo
     {
         private readonly IServiceVeiculo serviceVeiculo;
-        private readonly IMapperVeiculo mapperVeiculo;
+        private IMapper mapper;
 
-        public ApplicationServiceVeiculo(IServiceVeiculo serviceVeiculo, IMapperVeiculo mapperVeiculo)
+        public ApplicationServiceVeiculo(IServiceVeiculo serviceVeiculo, IMapper mapper)
         {
             this.serviceVeiculo = serviceVeiculo;
-            this.mapperVeiculo = mapperVeiculo;
+            this.mapper = mapper;
         }
 
         public void Add(VeiculoDto veiculoDto)
         {
             // pregando o DTO e covertendo para entidade
-            var veiculo = mapperVeiculo.MapperDtoToEntity(veiculoDto);
+            var veiculo = mapper.Map<Veiculo>(veiculoDto);
             serviceVeiculo.Add(veiculo); // adicionando no banco
         }
 
         public IEnumerable<VeiculoDto> GetAll()
         {
             var veiculos = serviceVeiculo.GetAll();
-            return mapperVeiculo.MapperListVeiculosDto(veiculos);
+            return mapper.Map<List<VeiculoDto>>(veiculos);
         }
 
         public VeiculoDto GetById(int id)
         {
             var veiculo = serviceVeiculo.GetById(id);
-            return mapperVeiculo.MapperEntityToDto(veiculo);
+            return mapper.Map<VeiculoDto>(veiculo);
         }
 
         public IEnumerable<VeiculoDto> GetByIdEstabelecimento(int id)
         {
             var veiculos = serviceVeiculo.GetByIdEstabelecimento(id);
-            return mapperVeiculo.MapperListVeiculosDto(veiculos);
+            return mapper.Map<List<VeiculoDto>>(veiculos);
         }
 
         public void Remove(int id)
@@ -55,7 +56,7 @@ namespace estacionamento.Application
             var veicOld = serviceVeiculo.GetById(veiculoDto.Id);
 
             /// dados atuais
-            var veiculo = mapperVeiculo.MapperDtoToEntity(veiculoDto);
+            var veiculo = mapper.Map<Veiculo>(veiculoDto);
 
             if (veiculo.Placa == null)
             {

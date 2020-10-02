@@ -3,7 +3,6 @@ using estacionamento.Application.Dtos;
 using estacionamento.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace estacionamento.Api.Test.Controllers
@@ -61,8 +60,8 @@ namespace estacionamento.Api.Test.Controllers
             {
                 Assert.Equal(it.VeiculosEntraram, it.VeiculosSairam);
             }
-           
         }
+
         [Fact]
         public void Get_WhenCalled_ChecksIfTheNumberOfVehiclesThatLeftTheParkingLotIsGreaterThan0()
         {
@@ -72,9 +71,8 @@ namespace estacionamento.Api.Test.Controllers
             var list = Assert.IsType<List<SaidaEntradaHoraDto>>(okResult.Value);
             foreach (var it in list)
             {
-                Assert.True(it.VeiculosPorHora>0);
+                Assert.True(it.VeiculosPorHora > 0);
             }
-
         }
     }
 }

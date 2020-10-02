@@ -1,9 +1,10 @@
+using AutoMapper;
 using estacionamento.Application;
+using estacionamento.Application.Dtos;
 using estacionamento.Application.Interfaces;
-using estacionamento.Application.Interfaces.Mappers;
-using estacionamento.Application.Mappers;
 using estacionamento.Domain.Core.Interfaces.Repositories;
 using estacionamento.Domain.Core.Interfaces.Services;
+using estacionamento.Domain.Entitys;
 using estacionamento.Domain.Services;
 using estacionamento.Infrastructure.Data;
 using estacionamento.Infrastructure.Data.Repositories;
@@ -48,13 +49,23 @@ namespace estacionamento.Api
             services.AddScoped<IRepositoryEstabelecimento, RepositoryEstabelecimento>();
             services.AddScoped<IRepositoryVeiculo, RepositoryVeiculo>();
 
-            services.AddScoped<IMapperEstabelecimento, MapperEstabelecimento>();
-            services.AddScoped<IMapperVeiculo, MapperVeiculo>();
-
             services.AddControllers(options =>
             {
                 options.RespectBrowserAcceptHeader = true;
             });
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<EstabelecimentoDto, Estabelecimento>();
+                cfg.CreateMap<Estabelecimento, EstabelecimentoDto>();
+
+                cfg.CreateMap<VeiculoDto, Veiculo>();
+                cfg.CreateMap<Veiculo, VeiculoDto>();
+            });
+
+            IMapper mapper = config.CreateMapper();
+
+            services.AddSingleton(mapper);
 
             services
                 .AddMvcCore()

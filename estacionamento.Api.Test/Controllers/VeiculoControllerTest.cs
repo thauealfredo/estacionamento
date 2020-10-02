@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using Xunit.Sdk;
 
 namespace estacionamento.Api.Test
 {
@@ -32,7 +31,6 @@ namespace estacionamento.Api.Test
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
 
-
         [Theory]
         [InlineData(1)]
         public void Get_WhenCalled_ReturnsOneVehicle(int id)
@@ -42,7 +40,6 @@ namespace estacionamento.Api.Test
             // Assert
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
-
 
         [Theory]
         [InlineData(1)]
@@ -64,7 +61,7 @@ namespace estacionamento.Api.Test
             // Act
             var dto = new VeiculoDto
             {
-                Id =1,
+                Id = 1,
                 Marca = "MarcaX",
                 Modelo = "Z-Model",
                 Placa = "ccc-3333",
@@ -132,7 +129,6 @@ namespace estacionamento.Api.Test
         //    // Assert
         //    Assert.IsType<OkObjectResult>(notFound);
         //}
-
 
         [Theory]
         [InlineData(1)]

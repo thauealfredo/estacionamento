@@ -70,7 +70,6 @@ namespace estacionamento.Api.Test
             aux.HrSaida = DateTime.Now.AddHours(1);
             veiculos.Remove(rm);
             veiculos.Add(aux);
-           
         }
 
         public void Update(VeiculoDto VeiculoDto)
