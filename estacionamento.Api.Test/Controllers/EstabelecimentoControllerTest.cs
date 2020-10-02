@@ -19,7 +19,7 @@ namespace estacionamento.Api.Test
         }
 
         [Fact]
-        public void Get_WhenCalled_ReturnsOkResult()
+        public void Get_WhenCalled_ReturnsAllEstablishments()
         {
             // Act
             var okResult = _controller.Get();
@@ -27,28 +27,26 @@ namespace estacionamento.Api.Test
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
 
-        [Theory]
-        [InlineData(3)]
-        [InlineData(2)]
-        public void Get_WhenCalled_ReturnsAllEstablishments(int id)
+        [Fact]
+        public void Get_WhenCalled_ReturnsAValidEstablishment()
         {
             // Act
-            var okResult = _controller.Get().Result as OkObjectResult;
-            // Assert
-            var items = Assert.IsType<List<EstabelecimentoDto>>(okResult.Value);
-            Assert.Equal(id, items.Count);
-        }
-
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        public void Get_WhenCalled_ReturnsOneEstablishment(int id)
-        {
-            // Act
-            var okResult = _controller.Get(id);
+            var okResult = _controller.Get(1);
             // Assert
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
+
+
+        [Theory]
+        [InlineData(0)]
+        public void Get_WhenCalled_ReturnsAnIValidEstablishment(int id)
+        {
+            // Act
+            var notFResult = _controller.Get(id);
+            // Assert
+            Assert.IsType<OkObjectResult>(notFResult.Result);
+        }
+
 
         [Fact]
         public void Post_WhenCalled_AddNewEstablishment()
@@ -75,9 +73,8 @@ namespace estacionamento.Api.Test
         }
 
         [Theory]
-        [InlineData(0)]
         [InlineData(1)]
-        public void Put_WhenCalled_UpdateAEstablishment(int id)
+        public void Put_WhenCalled_UpdateAEstablishmentIsValid(int id)
         {
             // Act
 
@@ -96,13 +93,42 @@ namespace estacionamento.Api.Test
 
         [Theory]
         [InlineData(0)]
+        public void Put_WhenCalled_UpdateAEstablishmentIsNotValid(int id)
+        {
+            // Act
+
+            List<EstabelecimentoDto> dtos = new List<EstabelecimentoDto>();
+
+            var dto = new EstabelecimentoDto
+            {
+                Id = id,
+                Nome = " Texc azul"
+            };
+
+            var notFResult = _controller.Put(dto);
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(notFResult);
+        }
+
+
+        [Theory]
         [InlineData(1)]
-        public void Delete_WhenCalled_DeleteAEstablishment(int id)
+        public void Delete_WhenCalled_DeleteAValidEstablishment(int id)
         {
             // Act
             var okResult = _controller.Delete(id);
             // Assert
             Assert.IsType<OkObjectResult>(okResult);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        public void Delete_WhenCalled_DeleteAnInvalidEstablishment(int id)
+        {
+            // Act
+            var Result = _controller.Delete(id);
+            // Assert
+            Assert.IsType<NotFoundResult>(Result);
         }
     }
 }

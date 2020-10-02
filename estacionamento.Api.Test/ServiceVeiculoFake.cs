@@ -67,9 +67,10 @@ namespace estacionamento.Api.Test
         {
             var rm = veiculos.ToList().Where(c => c.Id == id).FirstOrDefault();
             var aux = rm;
-            veiculos.Remove(rm);
             aux.HrSaida = DateTime.Now.AddHours(1);
+            veiculos.Remove(rm);
             veiculos.Add(aux);
+           
         }
 
         public void Update(VeiculoDto VeiculoDto)

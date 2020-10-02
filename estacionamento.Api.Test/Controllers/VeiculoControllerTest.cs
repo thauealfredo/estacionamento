@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Xunit.Sdk;
 
 namespace estacionamento.Api.Test
 {
@@ -13,15 +14,17 @@ namespace estacionamento.Api.Test
     {
         private VeiculoController _controller;
         private IApplicationServiceVeiculo _service;
+        private IApplicationServiceEstabelecimento _serviceEstab;
 
         public VeiculoControllerTest()
         {
             _service = new ServiceVeiculoFake();
-            _controller = new VeiculoController(_service, null);
+            _serviceEstab = new ServiceEstabelecimentoFake();
+            _controller = new VeiculoController(_service, _serviceEstab);
         }
 
         [Fact]
-        public void Get_WhenCalled_ReturnsOkResult()
+        public void Get_WhenCalled_ReturnsAllVehicles()
         {
             // Act
             var okResult = _controller.Get();
@@ -29,20 +32,8 @@ namespace estacionamento.Api.Test
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
 
-        [Theory]
-        [InlineData(3)]
-        [InlineData(2)]
-        public void Get_WhenCalled_ReturnsAllVehicles(int id)
-        {
-            // Act
-            var okResult = _controller.Get().Result as OkObjectResult;
-            // Assert
-            var items = Assert.IsType<List<VeiculoDto>>(okResult.Value);
-            Assert.Equal(id, items.Count);
-        }
 
         [Theory]
-        [InlineData(0)]
         [InlineData(1)]
         public void Get_WhenCalled_ReturnsOneVehicle(int id)
         {
@@ -51,6 +42,7 @@ namespace estacionamento.Api.Test
             // Assert
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
+
 
         [Theory]
         [InlineData(1)]
@@ -70,7 +62,6 @@ namespace estacionamento.Api.Test
         public void Post_WhenCalled_AddNewVehicle()
         {
             // Act
-
             var dto = new VeiculoDto
             {
                 Id =1,
@@ -90,14 +81,10 @@ namespace estacionamento.Api.Test
         }
 
         [Theory]
-        [InlineData(0)]
         [InlineData(1)]
-        public void Put_WhenCalled_UpdateAVehicle(int id)
+        public void Put_WhenCalled_UpdateAVehicleIsValid(int id)
         {
             // Act
-
-            List<EstabelecimentoDto> dtos = new List<EstabelecimentoDto>();
-
             var dto = new VeiculoDto
             {
                 Id = id,
@@ -111,14 +98,40 @@ namespace estacionamento.Api.Test
 
         [Theory]
         [InlineData(0)]
+        public void Put_WhenCalled_UpdateAVehicleIsNotValid(int id)
+        {
+            // Act
+
+            var dto = new VeiculoDto
+            {
+                Id = id,
+                Marca = "V- Marc"
+            };
+
+            var notFoundResult = _controller.Put(dto);
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(notFoundResult);
+        }
+
+        [Theory]
         [InlineData(1)]
-        public void Delete_WhenCalled_DeleteAVehicle(int id)
+        public void Delete_WhenCalled_DeleteAValidVehicle(int id)
         {
             // Act
             var okResult = _controller.Delete(id);
             // Assert
             Assert.IsType<OkObjectResult>(okResult);
         }
+
+        //[Theory]
+        //[InlineData(0)]
+        //public void Delete_WhenCalled_DeleteAnInvalidVehicle(int id)
+        //{
+        //    // Act
+        //    var notFound = _controller.Delete(id);
+        //    // Assert
+        //    Assert.IsType<OkObjectResult>(notFound);
+        //}
 
 
         [Theory]
