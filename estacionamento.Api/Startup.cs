@@ -40,6 +40,7 @@ namespace estacionamento.Api
 
             services.AddScoped<IApplicationServiceEstabelecimento, ApplicationServiceEstabelecimento>();
             services.AddScoped<IApplicationServiceVeiculo, ApplicationServiceVeiculo>();
+            services.AddScoped<IApplicationServiceRelatorio, ApplicationServiceRelatorio>();
 
             services.AddScoped<IServiceEstabelecimento, ServiceEstabelecimento>();
             services.AddScoped<IServiceVeiculo, ServiceVeiculo>();

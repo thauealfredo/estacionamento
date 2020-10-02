@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces\Repositories\IRepositoryRelatorio.cs" />
+    <Compile Remove="Interfaces\Services\IServiceRelatorio.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\estacionamento.Domain\estacionamento.Domain.csproj" />
   </ItemGroup>
 

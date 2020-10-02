@@ -3,6 +3,7 @@ using estacionamento.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace estacionamento.Api.Controllers
 {
@@ -15,10 +16,16 @@ namespace estacionamento.Api.Controllers
 
         private readonly IApplicationServiceVeiculo applicationServiceVeiculo;
 
-        public RelatorioController(IApplicationServiceEstabelecimento applicationServiceEstabelecimento, IApplicationServiceVeiculo applicationServiceVeiculo)
+        private readonly IApplicationServiceRelatorio applicationServiceRelatorio;
+
+        public RelatorioController(
+            IApplicationServiceEstabelecimento applicationServiceEstabelecimento, 
+            IApplicationServiceVeiculo applicationServiceVeiculo,
+            IApplicationServiceRelatorio applicationServiceRelatorio)
         {
             this.applicationServiceEstabelecimento = applicationServiceEstabelecimento;
             this.applicationServiceVeiculo = applicationServiceVeiculo;
+            this.applicationServiceRelatorio = applicationServiceRelatorio;
         }
 
         /// <summary>
@@ -28,29 +35,17 @@ namespace estacionamento.Api.Controllers
         public ActionResult<RelatorioDto> Get()
         {
             var veiculosAll = applicationServiceVeiculo.GetAll();
-
-            List<RelatorioDto> listaRelatorio = new List<RelatorioDto>();
+            List<RelatorioDto> relatorioList = new List<RelatorioDto>();
 
             foreach (var veic in veiculosAll)
             {
                 var estabelecimentoOne = applicationServiceEstabelecimento.GetById(veic.IdEstabelecimento);
 
-                var relatorio = new RelatorioDto
-                {
-                    NomeEstabelecimento = estabelecimentoOne.Nome,
-                    EnderecoEstabelecimento = estabelecimentoOne.Endereco,
-                    Placa = veic.Placa,
-                    Marca = veic.Marca,
-                    Modelo = veic.Modelo,
-                    Tipo = veic.Tipo,
-                    HrEntrada = veic.HrEntrada,
-                    HrSaida = veic.HrSaida,
-                    IdVaga = veic.IdVaga
-                };
+                var relatorioOne = applicationServiceRelatorio.Relatorio(estabelecimentoOne, veic);
 
-                listaRelatorio.Add(relatorio);
+                relatorioList.Add(relatorioOne.Last());
             }
-            return Ok(listaRelatorio);
+            return Ok(relatorioList);
         }
 
         /// <summary>
@@ -63,10 +58,10 @@ namespace estacionamento.Api.Controllers
 
             List<SaidaEntradaDto> listaRelatorio = new List<SaidaEntradaDto>();
 
-            foreach (var item in entrada)
+            foreach (var estab in entrada)
             {
                 // lista veiculos pelo id do estabelecimento
-                var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(item.Id);
+                var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(estab.Id);
 
                 var countSaida = 0;
                 var countEntrada = 0;
@@ -84,15 +79,9 @@ namespace estacionamento.Api.Controllers
                     }
                 }
 
-                var relatorio = new SaidaEntradaDto
-                {
-                    NomeEstabelecimento = item.Nome,
-                    EnderecoEstabelecimento = item.Endereco,
-                    VeiculosEntraram = countEntrada,
-                    VeiculosSairam = countSaida
-                };
+                var relatorioOne = applicationServiceRelatorio.SaidaEntradaDto(estab,countEntrada, countSaida);
 
-                listaRelatorio.Add(relatorio);
+                listaRelatorio.Add(relatorioOne.Last());
             }
 
             return Ok(listaRelatorio);
@@ -108,10 +97,10 @@ namespace estacionamento.Api.Controllers
 
             List<SaidaEntradaHoraDto> listaRelatorio = new List<SaidaEntradaHoraDto>();
 
-            foreach (var item in entrada)
+            foreach (var estab in entrada)
             {
                 // lista veiculos pelo id do estabelecimento
-                var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(item.Id);
+                var veiculoOne = applicationServiceVeiculo.GetByIdEstabelecimento(estab.Id);
 
                 float result = 0;
                 float count = 0; // quantidade de carros
@@ -130,13 +119,9 @@ namespace estacionamento.Api.Controllers
                     }
                 }
 
-                var relatorio = new SaidaEntradaHoraDto
-                {
-                    NomeEstabelecimento = item.Nome,
-                    EnderecoEstabelecimento = item.Endereco,
-                    VeiculosPorHora = result
-                };
-                listaRelatorio.Add(relatorio);
+                var relatorioOne = applicationServiceRelatorio.SaidaEntradaHoraDto(estab, result);
+               
+                listaRelatorio.Add(relatorioOne.Last());
             }
 
             return Ok(listaRelatorio);
